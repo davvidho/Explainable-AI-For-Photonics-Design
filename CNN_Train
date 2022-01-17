@@ -45,7 +45,7 @@ print('CNN_input_test size: {}'.format(np.shape(CNN_input_test)))
 print('CNN_output_train size: {}'.format(np.shape(CNN_output_train)))
 print('CNN_output_test size: {}'.format(np.shape(CNN_output_test)))
 
-# Define CNN Architecture
+# Define CNN Architecture, this took a lot of trial and error
 model = Sequential()
 model.add(Conv2D(16, (3,3), padding = 'same', input_shape = (128,128,1)))
 model.add(BatchNormalization())
@@ -68,7 +68,8 @@ model.add(BatchNormalization())
 model.add(LeakyReLU(0.2))
 model.add(AveragePooling2D(pool_size = (2,2), strides = 2))
 model.add(Flatten())
-model.add(Dense(7))
+model.add(Dense(7)) 
+#Dense is equal to 7, because I am trying to output a figure of merit value and 6 values that determine the wavelength at which it is being optimized
 
 
 cnnopt = Adam()
